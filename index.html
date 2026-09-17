@@ -32,6 +32,12 @@
               inkMuted: '#575760',    /* Refined Charcoal Grey */
               inkLight: '#8C8C96',    /* Soft Subtle Grey */
               gold: '#D4AF37',        /* Luxury Gold Accent */
+            },
+            whatsapp: {
+              DEFAULT: '#25D366',     /* Official WhatsApp Vibrant Green */
+              dark: '#128C7E',        /* Deep WhatsApp Teal */
+              hover: '#1EBE5D',       /* Vibrant Green Hover */
+              subtle: '#DCF8C6',      /* Chat Bubble Subtle Green */
             }
           }
         }
@@ -133,6 +139,18 @@
       animation: goldBreathingGlow 3.5s ease-in-out infinite alternate;
     }
 
+    /* Realistic WhatsApp Floating Ripple Pulse */
+    .whatsapp-pulse {
+      box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.5);
+      animation: waPulse 2s infinite cubic-bezier(0.66, 0, 0, 1);
+    }
+
+    @keyframes waPulse {
+      to {
+        box-shadow: 0 0 0 18px rgba(37, 211, 102, 0);
+      }
+    }
+
     @keyframes goldSheen {
       0% { left: -150%; }
       35% { left: 160%; }
@@ -152,7 +170,25 @@
     }
   </style>
 </head>
-<body class="bg-brand-creme text-brand-ink font-jakarta selection:bg-brand-ink selection:text-brand-creme antialiased contour-creme-bg">
+<body class="bg-brand-creme text-brand-ink font-jakarta selection:bg-brand-ink selection:text-brand-creme antialiased contour-creme-bg relative">
+
+  <!-- Floating Real WhatsApp Quick Action Button (Direct Gym Desk) -->
+  <a 
+    href="https://wa.me/919907464271?text=Hi%20Born2Fit%20Team,%20I%20am%20interested%20in%20joining%20the%20gym%20and%20personal%20training%20at%20New%20Town" 
+    target="_blank" 
+    rel="noopener noreferrer"
+    aria-label="Direct Chat on WhatsApp" 
+    class="fixed bottom-6 right-6 z-40 bg-[#25D366] hover:bg-[#1EBE5D] text-white p-3.5 sm:px-5 sm:py-3.5 rounded-full shadow-2xl flex items-center gap-3 transition-all duration-300 transform hover:scale-105 border border-white/20 whatsapp-pulse group"
+  >
+    <div class="relative flex items-center justify-center">
+      <i class="fa-brands fa-whatsapp text-2xl sm:text-3xl text-white drop-shadow-sm"></i>
+      <span class="absolute -top-1 -right-1 w-2.5 h-2.5 bg-white rounded-full border-2 border-[#25D366]"></span>
+    </div>
+    <div class="hidden sm:flex flex-col text-left">
+      <span class="text-[10px] uppercase font-bold text-white/90 tracking-wider leading-tight">Chat with us</span>
+      <span class="text-xs font-extrabold tracking-wide text-white leading-tight">WhatsApp Desk</span>
+    </div>
+  </a>
 
   <!-- Left Drawer Navigation -->
   <div id="drawerOverlay" onclick="toggleDrawer()" class="fixed inset-0 bg-brand-ink/40 backdrop-blur-sm z-50 opacity-0 pointer-events-none transition-opacity duration-300"></div>
@@ -215,22 +251,26 @@
         <a href="#contact" onclick="toggleDrawer()" class="p-3 rounded hover:bg-brand-cremeDark hover:text-brand-ink transition flex items-center gap-3 border border-transparent hover:border-brand-cremeBorder">
           <i class="fa-solid fa-location-dot text-brand-ink w-5 text-center"></i> Gym Location
         </a>
-        <a href="https://wa.me/919907464271?text=Hi%20Born2Fit,%20I%20want%20to%20inquire%20about%20personal%20training%20at%20New%20Town" target="_blank" class="p-3 rounded hover:bg-emerald-50 hover:text-emerald-700 transition flex items-center gap-3 border border-transparent hover:border-emerald-300 text-emerald-600 font-bold">
-          <i class="fa-brands fa-whatsapp text-emerald-600 w-5 text-center text-base"></i> WhatsApp (+91 99074 64271)
-        </a>
         <a href="#contact" onclick="toggleDrawer()" class="p-3 rounded hover:bg-brand-cremeDark hover:text-brand-ink transition flex items-center gap-3 border border-transparent hover:border-brand-cremeBorder">
           <i class="fa-solid fa-clock text-brand-ink w-5 text-center"></i> Operating Hours (Mon–Sat: 6AM – 10PM)
         </a>
       </nav>
     </div>
 
-    <!-- Footer (Fixed Bottom) -->
+    <!-- Footer (Fixed Bottom) -> Real WhatsApp Appearance -->
     <div class="p-6 pt-4 border-t border-brand-cremeBorder space-y-3 shrink-0 bg-brand-creme">
-      <div class="text-[11px] text-brand-inkMuted font-medium flex items-center gap-1.5">
-        <i class="fa-brands fa-whatsapp text-emerald-600 text-sm"></i> Direct WhatsApp Inquiry
+      <div class="flex items-center justify-between text-[11px] text-brand-inkMuted font-medium">
+        <span class="flex items-center gap-1.5 font-bold text-brand-ink">
+          <span class="w-2 h-2 rounded-full bg-[#25D366] animate-pulse"></span>
+          Direct Live WhatsApp
+        </span>
+        <span class="text-[10px] text-emerald-800 font-semibold bg-emerald-100 px-2 py-0.5 rounded-full">Active</span>
       </div>
-      <a href="https://wa.me/919907464271?text=Hi%20Born2Fit,%20I%20want%20to%20inquire%20about%20personal%20training%20at%20New%20Town" target="_blank" class="w-full bg-emerald-600 text-white text-xs font-bold uppercase tracking-wider py-3 rounded flex items-center justify-center gap-2 hover:bg-emerald-700 transition shadow-md">
-        <i class="fa-brands fa-whatsapp text-base"></i> Chat +91 99074 64271
+      <a href="https://wa.me/919907464271?text=Hi%20Born2Fit,%20I%20want%20to%20inquire%20about%20personal%20training%20at%20New%20Town" target="_blank" class="w-full bg-[#25D366] hover:bg-[#1EBE5D] text-white text-xs font-bold uppercase tracking-wider py-3.5 rounded-xl flex items-center justify-center gap-2.5 transition-all shadow-lg hover:shadow-[#25D366]/30 group">
+        <div class="w-6 h-6 rounded-full bg-white/20 flex items-center justify-center">
+          <i class="fa-brands fa-whatsapp text-white text-base group-hover:scale-110 transition-transform"></i>
+        </div>
+        <span>Chat on WhatsApp</span>
       </a>
     </div>
   </aside>
@@ -260,8 +300,9 @@
           <span id="liveStatusText" class="text-brand-ink">Checking Hours...</span>
         </div>
 
-        <a href="https://wa.me/919907464271?text=Hi%20Born2Fit,%20I%20want%20to%20enroll%20in%20personal%20training" target="_blank" class="hidden md:inline-flex items-center gap-1.5 bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-bold uppercase tracking-wider px-4 py-2.5 rounded transition shadow-md">
-          <i class="fa-brands fa-whatsapp text-sm"></i> +91 99074 64271
+        <a href="https://wa.me/919907464271?text=Hi%20Born2Fit,%20I%20want%20to%20enroll%20for%20a%20membership%20at%20New%20Town" target="_blank" class="hidden md:inline-flex items-center gap-2 bg-[#25D366] hover:bg-[#1EBE5D] text-white text-xs font-bold uppercase tracking-wider px-4 py-2.5 rounded transition shadow-md">
+          <i class="fa-brands fa-whatsapp text-sm"></i>
+          <span>WhatsApp Us</span>
         </a>
 
         <button onclick="openModal('Direct Enrollment')" class="bg-brand-ink hover:bg-black text-brand-creme text-xs font-bold uppercase tracking-widest px-5 py-2.5 rounded transition shadow-md transform hover:scale-[1.02]">
@@ -291,12 +332,16 @@
           <strong>Born2Fit</strong> is founded and spearheaded by <span class="inline-flex items-center gap-2 align-middle"><strong>Mr. Jeet Das (<span class="font-black text-brand-ink">JD</span>)</strong> <span class="jd-badge-enhanced h-8 w-8 sm:h-9 sm:w-9 shadow-md"><img src="WhatsApp Image 2026-08-31 at 2.10.37 AM.jpeg" alt="JD Logo" class="h-full w-full" /></span></span> (Owner & Mr. India) alongside personal trainer <strong>Suman</strong>. Master biomechanics, customized macro profiles, and progressive overload in New Town's premier fitness facility.
         </p>
 
-        <div class="flex flex-wrap gap-4 pt-2">
-          <a href="#timeline-forecaster" class="bg-brand-ink hover:bg-black text-brand-creme font-bold uppercase text-xs tracking-widest px-7 py-4 rounded transition flex items-center gap-3 shadow-md">
+        <div class="flex flex-wrap gap-4 pt-2 items-center">
+          <a href="#timeline-forecaster" class="bg-brand-ink hover:bg-black text-brand-creme font-bold uppercase text-xs tracking-widest px-6 py-3.5 rounded transition flex items-center justify-center gap-3 shadow-md h-[46px] box-border">
             <i class="fa-solid fa-calendar-days"></i> Forecast Goal Timeline
           </a>
-          <a href="https://wa.me/919907464271?text=Hi%20Born2Fit,%20I%20would%20like%20to%20book%20a%20free%201-on-1%20fitness%20assessment" target="_blank" class="border border-emerald-600 hover:bg-emerald-50 text-emerald-700 text-xs font-bold uppercase tracking-widest px-6 py-4 rounded transition bg-brand-cremeCard shadow-sm flex items-center gap-2">
-            <i class="fa-brands fa-whatsapp text-sm text-emerald-600"></i> WhatsApp Assessment (+91 99074 64271)
+          <button onclick="openModal('Free 1-on-1 Fitness Assessment')" class="border border-brand-cremeBorder hover:border-brand-ink text-brand-ink text-xs font-bold uppercase tracking-widest px-6 py-3.5 rounded transition bg-brand-cremeCard shadow-sm h-[46px] box-border flex items-center justify-center">
+            Book Assessment
+          </button>
+          <a href="https://wa.me/919907464271?text=Hi%20Born2Fit,%20I%20would%20like%20to%20connect%20with%20a%20trainer" target="_blank" class="bg-[#25D366] hover:bg-[#1EBE5D] text-white text-xs font-bold uppercase tracking-wider px-6 py-3.5 rounded transition inline-flex items-center justify-center gap-2.5 shadow-md group h-[46px] box-border">
+            <i class="fa-brands fa-whatsapp text-base group-hover:scale-110 transition-transform"></i>
+            <span>Instant WhatsApp</span>
           </a>
         </div>
 
@@ -330,9 +375,7 @@
                 <img src="WhatsApp Image 2026-08-25 at 10.24.10 PM.jpeg" alt="B2F Badge" class="w-full h-full object-contain" />
               </div>
               <div>
-                <p class="text-[10px] text-brand-inkMuted font-bold uppercase tracking-widest flex items-center gap-1">
-                  <i class="fa-brands fa-whatsapp text-emerald-600 text-xs"></i> WhatsApp: +91 99074 64271
-                </p>
+                <p class="text-[10px] text-brand-inkMuted font-bold uppercase tracking-widest">Born2Fit • New Town</p>
                 <div class="flex items-center gap-2">
                   <p class="text-brand-ink text-xs font-semibold">Mentorship by Mr. India Jeet Das (<span class="font-bold text-brand-ink">JD</span>)</p>
                   <span class="jd-badge-enhanced h-6 w-6 shrink-0"><img src="WhatsApp Image 2026-08-31 at 2.10.37 AM.jpeg" alt="JD Badge" class="h-full w-full" /></span>
@@ -363,8 +406,8 @@
               <span class="jd-badge-enhanced h-14 w-14 sm:h-16 sm:w-16 shadow-xl"><img src="WhatsApp Image 2026-08-31 at 2.10.37 AM.jpeg" alt="Mr. Jeet Das JD Logo" class="h-full w-full" /></span>
             </span>
           </h2>
-          <p class="text-xs text-brand-inkMuted font-semibold uppercase tracking-wider mt-2 flex items-center gap-2">
-            Founder, Owner &amp; Elite Head Coach • <a href="https://wa.me/919907464271?text=Hi%20Mr.%20Jeet%20Das%20(JD),%20I%20want%20to%20inquire%20about%20personal%20training" target="_blank" class="text-emerald-700 hover:underline inline-flex items-center gap-1 font-bold"><i class="fa-brands fa-whatsapp text-emerald-600"></i> +91 99074 64271</a>
+          <p class="text-xs text-brand-inkMuted font-semibold uppercase tracking-wider mt-2">
+            Founder, Owner &amp; Elite Head Coach
           </p>
         </div>
       </div>
@@ -466,7 +509,7 @@
 
       </div>
 
-      <!-- Pedigree Highlights & Actions -->
+      <!-- Pedigree Highlights & Actions with Real WhatsApp Styling -->
       <div class="mt-10 bg-brand-cremeCard border border-brand-cremeBorder rounded-2xl p-8 shadow-xl grid md:grid-cols-12 gap-8 items-center">
         <div class="md:col-span-8 space-y-4">
           <h3 class="font-teko text-4xl text-brand-ink uppercase leading-none flex flex-wrap items-center gap-3">
@@ -477,9 +520,9 @@
             As a renowned <strong>Mr. India titleholder</strong> and <strong>Bengal Icon Award Coach of the Year</strong>, <strong>Mr. Jeet Das (<span class="font-bold text-brand-ink">JD</span>)</strong> <span class="jd-badge-enhanced h-6 w-6 align-middle"><img src="WhatsApp Image 2026-08-31 at 2.10.37 AM.jpeg" alt="JD Logo" class="h-full w-full" /></span> applies championship methodologies to every client at Born2Fit New Town. From raw beginner strength building to extreme contest prep, his protocols prioritize joint safety, perfect muscular tension, and stage-proven nutritional science.
           </p>
           <div class="flex flex-wrap gap-4 text-xs font-bold text-brand-ink pt-1">
-            <span class="flex items-center gap-1.5"><i class="fa-solid fa-check text-xs"></i> National Titleholder Experience</span>
-            <span class="flex items-center gap-1.5"><i class="fa-solid fa-check text-xs"></i> Biomechanical Mastery</span>
-            <span class="flex items-center gap-1.5"><i class="fa-solid fa-check text-xs"></i> Custom Body Composition Plans</span>
+            <span class="flex items-center gap-1.5"><i class="fa-solid fa-check text-xs text-emerald-600"></i> National Titleholder Experience</span>
+            <span class="flex items-center gap-1.5"><i class="fa-solid fa-check text-xs text-emerald-600"></i> Biomechanical Mastery</span>
+            <span class="flex items-center gap-1.5"><i class="fa-solid fa-check text-xs text-emerald-600"></i> Custom Body Composition Plans</span>
           </div>
         </div>
         
@@ -488,8 +531,11 @@
             <span>Train with Mr. Jeet Das (JD)</span>
             <span class="jd-badge-enhanced h-6 w-6"><img src="WhatsApp Image 2026-08-31 at 2.10.37 AM.jpeg" alt="JD Icon" class="h-full w-full" /></span>
           </button>
-          <a href="https://wa.me/919907464271?text=Hi%20Mr.%20Jeet%20Das%20(JD),%20I%20am%20interested%20in%20personal%20training%20at%20Born2Fit%20New%20Town" target="_blank" class="w-full border border-emerald-600 bg-emerald-50 text-emerald-800 font-bold uppercase text-xs tracking-widest py-3 rounded-lg transition text-center flex items-center justify-center gap-2 shadow-sm hover:bg-emerald-100">
-            <i class="fa-brands fa-whatsapp text-emerald-600 text-base"></i> WhatsApp: +91 99074 64271
+          
+          <!-- Real WhatsApp Button for JD -->
+          <a href="https://wa.me/919907464271?text=Hi%20Mr.%20Jeet%20Das%20(JD),%20I%20am%20interested%20in%20personal%20training%20at%20Born2Fit%20New%20Town" target="_blank" class="w-full bg-[#25D366] hover:bg-[#1EBE5D] text-white font-bold uppercase text-xs tracking-wider py-3.5 rounded-lg transition text-center flex items-center justify-center gap-2.5 shadow-md group">
+            <i class="fa-brands fa-whatsapp text-lg group-hover:scale-110 transition-transform"></i>
+            <span>WhatsApp Mr. Jeet Das (JD)</span>
           </a>
         </div>
       </div>
@@ -507,11 +553,11 @@
           </div>
           <span class="text-xs uppercase font-bold tracking-widest text-brand-inkMuted">Championship In Action</span>
         </div>
-        <h2 class="font-teko text-5xl sm:text-6xl text-brand-ink uppercase">
+        <h2 class="font-teko text-5xl sm:text-6xl text-brand-ink uppercase leading-none">
           Owner's Own Session
         </h2>
         <p class="text-brand-inkMuted text-sm max-w-xl mx-auto font-normal">
-          Witness the relentless drive, relentless discipline, and stage-dominating power of Mr. India Prosenjit (Jeet) Das. Contact us directly at <a href="https://wa.me/919907464271" target="_blank" class="text-emerald-700 font-bold hover:underline inline-flex items-center gap-1"><i class="fa-brands fa-whatsapp text-emerald-600"></i> +91 99074 64271</a>.
+          Witness the relentless drive, relentless discipline, and stage-dominating power of Mr. India Prosenjit (Jeet) Das.
         </p>
       </div>
 
@@ -573,11 +619,12 @@
 
             <div class="pt-2 flex flex-col sm:flex-row gap-3">
               <button onclick="openModal('Train with Mr. India Jeet Das')" class="flex-1 bg-brand-ink hover:bg-black text-brand-creme font-bold uppercase text-xs tracking-widest py-3.5 rounded-lg transition shadow-md flex items-center justify-center gap-2">
-                <span>Start Journey</span>
+                <span>Start Your Championship Journey</span>
                 <i class="fa-solid fa-arrow-right text-xs"></i>
               </button>
-              <a href="https://wa.me/919907464271?text=Hi%20Mr.%20Jeet%20Das,%20I%20want%20to%20train%20at%20Born2Fit" target="_blank" class="flex-1 border border-emerald-600 bg-emerald-600 hover:bg-emerald-700 text-white font-bold uppercase text-xs tracking-widest py-3.5 rounded-lg transition shadow-md flex items-center justify-center gap-2">
-                <i class="fa-brands fa-whatsapp text-base"></i> WhatsApp Us
+              <a href="https://wa.me/919907464271?text=Hi%20Mr.%20Jeet%20Das%20(JD),%20I%20saw%20your%20training%20video%20and%20want%20to%20train%20dengan%20you" target="_blank" class="bg-[#25D366] hover:bg-[#1EBE5D] text-white font-bold uppercase text-xs tracking-wider px-4 py-3.5 rounded-lg transition shadow-md flex items-center justify-center gap-2 group">
+                <i class="fa-brands fa-whatsapp text-base group-hover:scale-110 transition-transform"></i>
+                <span>Direct WhatsApp</span>
               </a>
             </div>
           </div>
@@ -599,7 +646,7 @@
         </div>
         <h2 class="font-teko text-5xl sm:text-6xl text-brand-ink uppercase">Personal Trainers</h2>
         <p class="text-brand-inkMuted text-sm max-w-xl mx-auto font-normal">
-          Get coached directly by our dedicated personal trainers at Born2Fit New Town. Contact via WhatsApp: <a href="https://wa.me/919907464271" target="_blank" class="text-emerald-700 font-bold hover:underline inline-flex items-center gap-1"><i class="fa-brands fa-whatsapp text-emerald-600"></i> +91 99074 64271</a>.
+          Get coached directly by our dedicated personal trainers at Born2Fit New Town for measurable, scientific physique transformations.
         </p>
       </div>
 
@@ -634,9 +681,9 @@
             </div>
 
             <div class="space-y-1.5 border-t border-brand-cremeBorder pt-3 text-xs text-brand-ink">
-              <div class="flex items-center gap-2"><i class="fa-solid fa-check text-xs"></i> 1-on-1 Personalized Form & Biomechanics</div>
-              <div class="flex items-center gap-2"><i class="fa-solid fa-check text-xs"></i> Stage & Competition Level Conditioning</div>
-              <div class="flex items-center gap-2"><i class="fa-solid fa-check text-xs"></i> Metabolic Deficit & Surplus Programming</div>
+              <div class="flex items-center gap-2"><i class="fa-solid fa-check text-xs text-emerald-600"></i> 1-on-1 Personalized Form & Biomechanics</div>
+              <div class="flex items-center gap-2"><i class="fa-solid fa-check text-xs text-emerald-600"></i> Stage & Competition Level Conditioning</div>
+              <div class="flex items-center gap-2"><i class="fa-solid fa-check text-xs text-emerald-600"></i> Metabolic Deficit & Surplus Programming</div>
             </div>
           </div>
 
@@ -645,8 +692,9 @@
               <span>Book Mr. Jeet Das (JD)</span>
               <span class="jd-badge-enhanced h-6 w-6"><img src="WhatsApp Image 2026-08-31 at 2.10.37 AM.jpeg" alt="JD Logo Small" class="h-full w-full" /></span>
             </button>
-            <a href="https://wa.me/919907464271?text=Hi%20Mr.%20Jeet%20Das%20(JD),%20I%20want%20to%20enroll%20in%20personal%20training" target="_blank" class="px-4 border border-emerald-600 bg-emerald-600 hover:bg-emerald-700 text-white flex items-center justify-center rounded-lg transition shadow-sm" title="WhatsApp Mr. Jeet Das">
-              <i class="fa-brands fa-whatsapp text-base"></i>
+            <!-- Real WhatsApp Button for JD -->
+            <a href="https://wa.me/919907464271?text=Hi%20Mr.%20Jeet%20Das%20(JD),%20I%20want%20to%20enroll%20in%20personal%20training" target="_blank" aria-label="WhatsApp Mr. Jeet Das" class="px-4 bg-[#25D366] hover:bg-[#1EBE5D] text-white flex items-center justify-center rounded-lg transition shadow-md group">
+              <i class="fa-brands fa-whatsapp text-xl group-hover:scale-110 transition-transform"></i>
             </a>
           </div>
         </div>
@@ -677,9 +725,9 @@
             </div>
 
             <div class="space-y-1.5 border-t border-brand-cremeBorder pt-3 text-xs text-brand-ink">
-              <div class="flex items-center gap-2"><i class="fa-solid fa-check text-xs"></i> Zero-Injury Posture & Joint Alignment</div>
-              <div class="flex items-center gap-2"><i class="fa-solid fa-check text-xs"></i> Calibrated Indian Macro & Diet Planning</div>
-              <div class="flex items-center gap-2"><i class="fa-solid fa-check text-xs"></i> Weekly Caliper & Biometric Audits</div>
+              <div class="flex items-center gap-2"><i class="fa-solid fa-check text-xs text-emerald-600"></i> Zero-Injury Posture & Joint Alignment</div>
+              <div class="flex items-center gap-2"><i class="fa-solid fa-check text-xs text-emerald-600"></i> Calibrated Indian Macro & Diet Planning</div>
+              <div class="flex items-center gap-2"><i class="fa-solid fa-check text-xs text-emerald-600"></i> Weekly Caliper & Biometric Audits</div>
             </div>
           </div>
 
@@ -687,8 +735,9 @@
             <button onclick="openModal('Personal Training with Suman')" class="flex-1 bg-brand-ink hover:bg-black text-brand-creme font-bold uppercase text-xs tracking-widest py-3 rounded-lg transition shadow-md">
               Book Suman
             </button>
-            <a href="https://wa.me/919907464271?text=Hi%20Suman,%20I%20want%20to%20enroll%20in%20personal%20training" target="_blank" class="px-4 border border-emerald-600 bg-emerald-600 hover:bg-emerald-700 text-white flex items-center justify-center rounded-lg transition shadow-sm" title="WhatsApp Suman">
-              <i class="fa-brands fa-whatsapp text-base"></i>
+            <!-- Real WhatsApp Button for Suman -->
+            <a href="https://wa.me/919907464271?text=Hi%20Suman,%20I%20want%20to%20enroll%20in%20personal%20training" target="_blank" aria-label="WhatsApp Suman" class="px-4 bg-[#25D366] hover:bg-[#1EBE5D] text-white flex items-center justify-center rounded-lg transition shadow-md group">
+              <i class="fa-brands fa-whatsapp text-xl group-hover:scale-110 transition-transform"></i>
             </a>
           </div>
         </div>
@@ -767,14 +816,9 @@
               </div>
             </div>
 
-            <div class="flex flex-col gap-2 mt-4">
-              <button onclick="openModal('Custom Timeline Program')" class="w-full bg-brand-ink hover:bg-black text-brand-creme font-bold uppercase text-xs tracking-widest py-3 rounded transition shadow-md">
-                Lock In Timeline with Trainers
-              </button>
-              <a href="https://wa.me/919907464271?text=Hi%20Born2Fit,%20I%20calculated%20my%20timeline%20and%20want%20to%20start%20my%20transformation" target="_blank" class="w-full bg-emerald-600 hover:bg-emerald-700 text-white font-bold uppercase text-xs tracking-widest py-3 rounded transition shadow-md flex items-center justify-center gap-2">
-                <i class="fa-brands fa-whatsapp text-base"></i> WhatsApp Forecaster Plan (+91 99074 64271)
-              </a>
-            </div>
+            <button onclick="openModal('Custom Timeline Program')" class="mt-4 w-full bg-brand-ink hover:bg-black text-brand-creme font-bold uppercase text-xs tracking-widest py-3.5 rounded transition shadow-md">
+              Lock In Timeline with Trainers
+            </button>
           </div>
         </div>
       </div>
@@ -855,9 +899,9 @@
             <i class="fa-solid fa-circle-info text-brand-ink text-base"></i>
             <p class="text-xs text-brand-ink font-medium" id="coachAdviceText">Loading guidance...</p>
           </div>
-          <a href="https://wa.me/919907464271?text=Hi%20Born2Fit,%20I%20calculated%20my%20macros%20and%20want%20a%20custom%20meal%20sheet" target="_blank" class="text-xs uppercase font-bold text-emerald-700 hover:underline shrink-0 inline-flex items-center gap-1">
-            <i class="fa-brands fa-whatsapp text-emerald-600"></i> WhatsApp Meal Sheet &rarr;
-          </a>
+          <button onclick="openModal('Nutrition Consultation')" class="text-xs uppercase font-bold text-brand-ink hover:underline shrink-0">
+            Request Meal Sheet &rarr;
+          </button>
         </div>
       </div>
     </div>
@@ -902,7 +946,7 @@
           </div>
           <div class="pt-4 mt-4 border-t border-brand-cremeBorder flex items-center justify-between text-xs text-brand-ink font-semibold">
             <span class="inline-flex items-center gap-1.5">By Mr. Jeet Das (<strong class="text-brand-ink font-bold">JD</strong>) <span class="jd-badge-enhanced h-5 w-5"><img src="WhatsApp Image 2026-08-31 at 2.10.37 AM.jpeg" alt="JD" class="h-full w-full" /></span></span>
-            <a href="https://wa.me/919907464271?text=Hi%20Born2Fit,%20I%20read%20your%20biomechanics%20article" target="_blank" class="text-emerald-700 hover:underline font-bold inline-flex items-center gap-1"><i class="fa-brands fa-whatsapp text-emerald-600"></i> Chat</a>
+            <span class="text-brand-inkMuted">4 Min Read</span>
           </div>
         </div>
 
@@ -917,7 +961,7 @@
           </div>
           <div class="pt-4 mt-4 border-t border-brand-cremeBorder flex items-center justify-between text-xs text-brand-ink font-semibold">
             <span>By Suman</span>
-            <a href="https://wa.me/919907464271?text=Hi%20Suman,%20I%20want%20nutrition%20guidance" target="_blank" class="text-emerald-700 hover:underline font-bold inline-flex items-center gap-1"><i class="fa-brands fa-whatsapp text-emerald-600"></i> Chat</a>
+            <span class="text-brand-inkMuted">5 Min Read</span>
           </div>
         </div>
 
@@ -932,7 +976,7 @@
           </div>
           <div class="pt-4 mt-4 border-t border-brand-cremeBorder flex items-center justify-between text-xs text-brand-ink font-semibold">
             <span class="inline-flex items-center gap-1.5">By Mr. Jeet Das (<strong class="text-brand-ink font-bold">JD</strong>) <span class="jd-badge-enhanced h-5 w-5"><img src="WhatsApp Image 2026-08-31 at 2.10.37 AM.jpeg" alt="JD" class="h-full w-full" /></span></span>
-            <a href="https://wa.me/919907464271?text=Hi%20Born2Fit,%20I%20want%20to%20learn%20about%20progressive%20overload" target="_blank" class="text-emerald-700 hover:underline font-bold inline-flex items-center gap-1"><i class="fa-brands fa-whatsapp text-emerald-600"></i> Chat</a>
+            <span class="text-brand-inkMuted">3 Min Read</span>
           </div>
         </div>
 
@@ -947,7 +991,7 @@
           </div>
           <div class="pt-4 mt-4 border-t border-brand-cremeBorder flex items-center justify-between text-xs text-brand-ink font-semibold">
             <span>By Suman</span>
-            <a href="https://wa.me/919907464271?text=Hi%20Born2Fit,%20I%20want%20recovery%20advice" target="_blank" class="text-emerald-700 hover:underline font-bold inline-flex items-center gap-1"><i class="fa-brands fa-whatsapp text-emerald-600"></i> Chat</a>
+            <span class="text-brand-inkMuted">4 Min Read</span>
           </div>
         </div>
 
@@ -962,7 +1006,7 @@
           </div>
           <div class="pt-4 mt-4 border-t border-brand-cremeBorder flex items-center justify-between text-xs text-brand-ink font-semibold">
             <span class="inline-flex items-center gap-1.5">By Mr. Jeet Das (<strong class="text-brand-ink font-bold">JD</strong>) <span class="jd-badge-enhanced h-5 w-5"><img src="WhatsApp Image 2026-08-31 at 2.10.37 AM.jpeg" alt="JD" class="h-full w-full" /></span></span>
-            <a href="https://wa.me/919907464271?text=Hi%20Born2Fit,%20I%20want%20hypertrophy%20training" target="_blank" class="text-emerald-700 hover:underline font-bold inline-flex items-center gap-1"><i class="fa-brands fa-whatsapp text-emerald-600"></i> Chat</a>
+            <span class="text-brand-inkMuted">5 Min Read</span>
           </div>
         </div>
 
@@ -977,7 +1021,7 @@
           </div>
           <div class="pt-4 mt-4 border-t border-brand-cremeBorder flex items-center justify-between text-xs text-brand-ink font-semibold">
             <span>By Suman</span>
-            <a href="https://wa.me/919907464271?text=Hi%20Born2Fit,%20I%20want%20injury%20prevention%20guidance" target="_blank" class="text-emerald-700 hover:underline font-bold inline-flex items-center gap-1"><i class="fa-brands fa-whatsapp text-emerald-600"></i> Chat</a>
+            <span class="text-brand-inkMuted">4 Min Read</span>
           </div>
         </div>
 
@@ -997,7 +1041,7 @@
         </div>
         <h2 class="font-teko text-5xl sm:text-6xl text-brand-ink uppercase">1-on-1 Training Sessions</h2>
         <p class="text-brand-inkMuted text-sm max-w-2xl mx-auto font-normal">
-          Watch Mr. India Jeet Das (<strong class="text-brand-ink font-bold">JD</strong>) <span class="jd-badge-enhanced h-6 w-6 align-middle"><img src="WhatsApp Image 2026-08-31 at 2.10.37 AM.jpeg" alt="JD" class="h-full w-full" /></span> in active personal training sessions. WhatsApp us at <a href="https://wa.me/919907464271" target="_blank" class="text-emerald-700 font-bold hover:underline inline-flex items-center gap-1"><i class="fa-brands fa-whatsapp text-emerald-600"></i> +91 99074 64271</a> to book your slot.
+          Watch Mr. India Jeet Das (<strong class="text-brand-ink font-bold">JD</strong>) <span class="jd-badge-enhanced h-6 w-6 align-middle"><img src="WhatsApp Image 2026-08-31 at 2.10.37 AM.jpeg" alt="JD" class="h-full w-full" /></span> in active personal training sessions—guiding active mechanical tension, elbow positioning, tempo control, and zero-injury execution.
         </p>
       </div>
 
@@ -1029,8 +1073,8 @@
 
           <div class="mt-4 pt-3 border-t border-brand-cremeBorder flex items-center justify-between">
             <span class="text-[11px] font-bold text-brand-ink">Live 1-on-1 Floor Cueing</span>
-            <a href="https://wa.me/919907464271?text=Hi%20Born2Fit,%20I%20want%20to%20book%20a%201-on-1%20training%20session" target="_blank" class="text-xs uppercase font-bold text-emerald-700 hover:underline inline-flex items-center gap-1">
-              <i class="fa-brands fa-whatsapp text-emerald-600"></i> WhatsApp to Train &rarr;
+            <a href="https://wa.me/919907464271?text=Hi%20Born2Fit,%20I%20want%20to%20inquire%20about%20sessions%20demonstrated%20in%20Tricep%20Pushdown%20video" target="_blank" class="text-xs uppercase font-bold text-emerald-700 hover:text-emerald-800 flex items-center gap-1.5">
+              <i class="fa-brands fa-whatsapp text-sm"></i> Train Like This &rarr;
             </a>
           </div>
         </div>
@@ -1062,8 +1106,8 @@
 
           <div class="mt-4 pt-3 border-t border-brand-cremeBorder flex items-center justify-between">
             <span class="text-[11px] font-bold text-brand-ink">Live 1-on-1 Floor Cueing</span>
-            <a href="https://wa.me/919907464271?text=Hi%20Born2Fit,%20I%20want%20to%20book%20a%201-on-1%20training%20session" target="_blank" class="text-xs uppercase font-bold text-emerald-700 hover:underline inline-flex items-center gap-1">
-              <i class="fa-brands fa-whatsapp text-emerald-600"></i> WhatsApp to Train &rarr;
+            <a href="https://wa.me/919907464271?text=Hi%20Born2Fit,%20I%20want%20to%20inquire%20about%20sessions%20demonstrated%20in%20Cable%20Crossover%20video" target="_blank" class="text-xs uppercase font-bold text-emerald-700 hover:text-emerald-800 flex items-center gap-1.5">
+              <i class="fa-brands fa-whatsapp text-sm"></i> Train Like This &rarr;
             </a>
           </div>
         </div>
@@ -1071,7 +1115,7 @@
     </div>
   </section>
 
-  <!-- Real Member Transformations Section -->
+  <!-- Real Member Transformations Section (Enhanced with 4 New Case Studies) -->
   <section id="transformations" class="py-24 border-b border-brand-cremeBorder bg-brand-cremeDark/40">
     <div class="max-w-7xl mx-auto px-6">
       <div class="text-center space-y-3 mb-16">
@@ -1083,7 +1127,7 @@
         </div>
         <h2 class="font-teko text-5xl sm:text-6xl text-brand-ink uppercase">Verified Member Transformations</h2>
         <p class="text-brand-inkMuted text-sm max-w-2xl mx-auto font-normal">
-          Real athletes and daily gym members who sculpted their bodies under the guidance of <span class="inline-flex items-center gap-1.5 align-middle">Mr. Jeet Das (<strong class="text-brand-ink font-bold">JD</strong>) <span class="jd-badge-enhanced h-6 w-6"><img src="WhatsApp Image 2026-08-31 at 2.10.37 AM.jpeg" alt="JD" class="h-full w-full" /></span></span> (Mr. India) and Suman. Contact via WhatsApp: <a href="https://wa.me/919907464271" target="_blank" class="text-emerald-700 font-bold hover:underline inline-flex items-center gap-1"><i class="fa-brands fa-whatsapp text-emerald-600"></i> +91 99074 64271</a>.
+          Real athletes and daily gym members who sculpted their bodies under the guidance of <span class="inline-flex items-center gap-1.5 align-middle">Mr. Jeet Das (<strong class="text-brand-ink font-bold">JD</strong>) <span class="jd-badge-enhanced h-6 w-6"><img src="WhatsApp Image 2026-08-31 at 2.10.37 AM.jpeg" alt="JD" class="h-full w-full" /></span></span> (Mr. India) and Suman at Born2Fit.
         </p>
       </div>
 
@@ -1119,7 +1163,7 @@
 
           <div class="mt-5 pt-4 border-t border-brand-cremeBorder flex items-center justify-between text-xs font-semibold text-brand-ink">
             <span>Result: <strong class="text-brand-ink">Core Pull & Reduced Inches</strong></span>
-            <a href="https://wa.me/919907464271?text=Hi%20Born2Fit,%20I%20want%20similar%20transformation%20results" target="_blank" class="text-emerald-700 hover:underline font-bold inline-flex items-center gap-1"><i class="fa-brands fa-whatsapp text-emerald-600"></i> WhatsApp Us</a>
+            <span class="text-[10px] uppercase font-bold text-brand-inkMuted border border-brand-cremeBorder px-2 py-0.5 rounded bg-brand-cremeDark">10 Classes</span>
           </div>
         </div>
 
@@ -1152,7 +1196,7 @@
 
           <div class="mt-5 pt-4 border-t border-brand-cremeBorder flex items-center justify-between text-xs font-semibold text-brand-ink">
             <span>Result: <strong class="text-brand-ink">Stage Ready Striations</strong></span>
-            <a href="https://wa.me/919907464271?text=Hi%20Born2Fit,%20I%20want%20similar%20transformation%20results" target="_blank" class="text-emerald-700 hover:underline font-bold inline-flex items-center gap-1"><i class="fa-brands fa-whatsapp text-emerald-600"></i> WhatsApp Us</a>
+            <span class="text-[10px] uppercase font-bold text-brand-inkMuted border border-brand-cremeBorder px-2 py-0.5 rounded bg-brand-cremeDark">7 Months</span>
           </div>
         </div>
 
@@ -1185,7 +1229,7 @@
 
           <div class="mt-5 pt-4 border-t border-brand-cremeBorder flex items-center justify-between text-xs font-semibold text-brand-ink">
             <span>Result: <strong class="text-brand-ink">Deep Lat Expansion & V-Taper</strong></span>
-            <a href="https://wa.me/919907464271?text=Hi%20Born2Fit,%20I%20want%20similar%20transformation%20results" target="_blank" class="text-emerald-700 hover:underline font-bold inline-flex items-center gap-1"><i class="fa-brands fa-whatsapp text-emerald-600"></i> WhatsApp Us</a>
+            <span class="text-[10px] uppercase font-bold text-brand-inkMuted border border-brand-cremeBorder px-2 py-0.5 rounded bg-brand-cremeDark">10 Months</span>
           </div>
         </div>
 
@@ -1218,7 +1262,7 @@
 
           <div class="mt-5 pt-4 border-t border-brand-cremeBorder flex items-center justify-between text-xs font-semibold text-brand-ink">
             <span>Result: <strong class="text-brand-ink">Flat Midsection & Shoulder Line</strong></span>
-            <a href="https://wa.me/919907464271?text=Hi%20Born2Fit,%20I%20want%20similar%20transformation%20results" target="_blank" class="text-emerald-700 hover:underline font-bold inline-flex items-center gap-1"><i class="fa-brands fa-whatsapp text-emerald-600"></i> WhatsApp Us</a>
+            <span class="text-[10px] uppercase font-bold text-brand-inkMuted border border-brand-cremeBorder px-2 py-0.5 rounded bg-brand-cremeDark">2 Months</span>
           </div>
         </div>
 
@@ -1251,7 +1295,7 @@
 
           <div class="mt-5 pt-4 border-t border-brand-cremeBorder flex items-center justify-between text-xs font-semibold text-brand-ink">
             <span>Result: <strong class="text-brand-ink">Striated V-Taper</strong></span>
-            <a href="https://wa.me/919907464271?text=Hi%20Born2Fit,%20I%20want%20similar%20transformation%20results" target="_blank" class="text-emerald-700 hover:underline font-bold inline-flex items-center gap-1"><i class="fa-brands fa-whatsapp text-emerald-600"></i> WhatsApp Us</a>
+            <span class="text-[10px] uppercase font-bold text-brand-inkMuted border border-brand-cremeBorder px-2 py-0.5 rounded">6 Months</span>
           </div>
         </div>
 
@@ -1284,7 +1328,7 @@
 
           <div class="mt-5 pt-4 border-t border-brand-cremeBorder flex items-center justify-between text-xs font-semibold text-brand-ink">
             <span>Result: <strong class="text-brand-ink">Athletic Muscle Tone</strong></span>
-            <a href="https://wa.me/919907464271?text=Hi%20Born2Fit,%20I%20want%20similar%20transformation%20results" target="_blank" class="text-emerald-700 hover:underline font-bold inline-flex items-center gap-1"><i class="fa-brands fa-whatsapp text-emerald-600"></i> WhatsApp Us</a>
+            <span class="text-[10px] uppercase font-bold text-brand-inkMuted border border-brand-cremeBorder px-2 py-0.5 rounded">6 Months</span>
           </div>
         </div>
 
@@ -1317,7 +1361,7 @@
 
           <div class="mt-5 pt-4 border-t border-brand-cremeBorder flex items-center justify-between text-xs font-semibold text-brand-ink">
             <span>Result: <strong class="text-brand-ink">Flat Waist & Chest Lift</strong></span>
-            <a href="https://wa.me/919907464271?text=Hi%20Born2Fit,%20I%20want%20similar%20transformation%20results" target="_blank" class="text-emerald-700 hover:underline font-bold inline-flex items-center gap-1"><i class="fa-brands fa-whatsapp text-emerald-600"></i> WhatsApp Us</a>
+            <span class="text-[10px] uppercase font-bold text-brand-inkMuted border border-brand-cremeBorder px-2 py-0.5 rounded">46 Days</span>
           </div>
         </div>
 
@@ -1350,7 +1394,7 @@
 
           <div class="mt-5 pt-4 border-t border-brand-cremeBorder flex items-center justify-between text-xs font-semibold text-brand-ink">
             <span>Result: <strong class="text-brand-ink">Massive Inches Lost</strong></span>
-            <a href="https://wa.me/919907464271?text=Hi%20Born2Fit,%20I%20want%20similar%20transformation%20results" target="_blank" class="text-emerald-700 hover:underline font-bold inline-flex items-center gap-1"><i class="fa-brands fa-whatsapp text-emerald-600"></i> WhatsApp Us</a>
+            <span class="text-[10px] uppercase font-bold text-brand-inkMuted border border-brand-cremeBorder px-2 py-0.5 rounded">45 Days</span>
           </div>
         </div>
 
@@ -1383,7 +1427,7 @@
 
           <div class="mt-5 pt-4 border-t border-brand-cremeBorder flex items-center justify-between text-xs font-semibold text-brand-ink">
             <span>Result: <strong class="text-brand-ink">Ultra-Low Body Fat & Abs</strong></span>
-            <a href="https://wa.me/919907464271?text=Hi%20Born2Fit,%20I%20want%20similar%20transformation%20results" target="_blank" class="text-emerald-700 hover:underline font-bold inline-flex items-center gap-1"><i class="fa-brands fa-whatsapp text-emerald-600"></i> WhatsApp Us</a>
+            <span class="text-[10px] uppercase font-bold text-brand-inkMuted border border-brand-cremeBorder px-2 py-0.5 rounded">3 Months</span>
           </div>
         </div>
 
@@ -1398,7 +1442,7 @@
         <span class="text-xs uppercase font-bold tracking-widest text-brand-inkMuted">Community Voice</span>
         <h2 class="font-teko text-5xl sm:text-6xl text-brand-ink uppercase">What Our Members Say</h2>
         <p class="text-brand-inkMuted text-sm max-w-xl mx-auto font-normal">
-          Honest feedback from lifters and fitness enthusiasts training daily at Born2Fit New Town. Contact via WhatsApp: <a href="https://wa.me/919907464271" target="_blank" class="text-emerald-700 font-bold hover:underline inline-flex items-center gap-1"><i class="fa-brands fa-whatsapp text-emerald-600"></i> +91 99074 64271</a>.
+          Honest feedback from lifters and fitness enthusiasts training daily at Born2Fit New Town.
         </p>
       </div>
 
@@ -1418,17 +1462,14 @@
               "Having <span class="inline-flex items-center gap-1.5 align-middle">Mr. Jeet Das (<strong class="text-brand-ink font-bold">JD</strong>) <span class="jd-badge-enhanced h-5 w-5"><img src="WhatsApp Image 2026-08-31 at 2.10.37 AM.jpeg" alt="JD" class="h-full w-full" /></span></span> (Mr. India) right on the floor guiding your posture and angles makes a massive difference. You simply don't get this level of expertise in typical gyms."
             </p>
           </div>
-          <div class="mt-6 pt-4 border-t border-brand-cremeBorder flex items-center justify-between">
-            <div class="flex items-center gap-3">
-              <div class="w-9 h-9 rounded-full bg-brand-cremeDark flex items-center justify-center font-bold text-xs text-brand-ink">
-                SD
-              </div>
-              <div>
-                <h4 class="font-bold text-xs text-brand-ink">Sourav Dutta</h4>
-                <p class="text-[10px] text-brand-inkMuted">Member for 8 Months</p>
-              </div>
+          <div class="mt-6 pt-4 border-t border-brand-cremeBorder flex items-center gap-3">
+            <div class="w-9 h-9 rounded-full bg-brand-cremeDark flex items-center justify-center font-bold text-xs text-brand-ink">
+              SD
             </div>
-            <a href="https://wa.me/919907464271?text=Hi%20Born2Fit,%20I%20read%20Sourav's%20review%20and%20want%20to%20join" target="_blank" class="text-emerald-600 hover:text-emerald-700 text-sm" title="WhatsApp Inquiry"><i class="fa-brands fa-whatsapp"></i></a>
+            <div>
+              <h4 class="font-bold text-xs text-brand-ink">Sourav Dutta</h4>
+              <p class="text-[10px] text-brand-inkMuted">Member for 8 Months</p>
+            </div>
           </div>
         </div>
 
@@ -1446,17 +1487,14 @@
               "Suman sir is exceptionally patient with form correction. His diet plan was super realistic with regular Bengali homemade food. Dropped 9 kgs without feeling starved."
             </p>
           </div>
-          <div class="mt-6 pt-4 border-t border-brand-cremeBorder flex items-center justify-between">
-            <div class="flex items-center gap-3">
-              <div class="w-9 h-9 rounded-full bg-brand-cremeDark flex items-center justify-center font-bold text-xs text-brand-ink">
-                AC
-              </div>
-              <div>
-                <h4 class="font-bold text-xs text-brand-ink">Arpita Chowdhury</h4>
-                <p class="text-[10px] text-brand-inkMuted">Personal Training Client</p>
-              </div>
+          <div class="mt-6 pt-4 border-t border-brand-cremeBorder flex items-center gap-3">
+            <div class="w-9 h-9 rounded-full bg-brand-cremeDark flex items-center justify-center font-bold text-xs text-brand-ink">
+              AC
             </div>
-            <a href="https://wa.me/919907464271?text=Hi%20Born2Fit,%20I%20want%20to%20train%20with%20Suman" target="_blank" class="text-emerald-600 hover:text-emerald-700 text-sm" title="WhatsApp Inquiry"><i class="fa-brands fa-whatsapp"></i></a>
+            <div>
+              <h4 class="font-bold text-xs text-brand-ink">Arpita Chowdhury</h4>
+              <p class="text-[10px] text-brand-inkMuted">Personal Training Client</p>
+            </div>
           </div>
         </div>
 
@@ -1474,17 +1512,14 @@
               "Top-tier barbell equipment, clean surroundings, and serious lifters. Open from 6 AM to 10 PM Monday through Saturday which fits perfectly with my busy work schedule."
             </p>
           </div>
-          <div class="mt-6 pt-4 border-t border-brand-cremeBorder flex items-center justify-between">
-            <div class="flex items-center gap-3">
-              <div class="w-9 h-9 rounded-full bg-brand-cremeDark flex items-center justify-center font-bold text-xs text-brand-ink">
-                MB
-              </div>
-              <div>
-                <h4 class="font-bold text-xs text-brand-ink">Manish Banerjee</h4>
-                <p class="text-[10px] text-brand-inkMuted">Annual Tier Member</p>
-              </div>
+          <div class="mt-6 pt-4 border-t border-brand-cremeBorder flex items-center gap-3">
+            <div class="w-9 h-9 rounded-full bg-brand-cremeDark flex items-center justify-center font-bold text-xs text-brand-ink">
+              MB
             </div>
-            <a href="https://wa.me/919907464271?text=Hi%20Born2Fit,%20I%20want%20annual%20membership%20details" target="_blank" class="text-emerald-600 hover:text-emerald-700 text-sm" title="WhatsApp Inquiry"><i class="fa-brands fa-whatsapp"></i></a>
+            <div>
+              <h4 class="font-bold text-xs text-brand-ink">Manish Banerjee</h4>
+              <p class="text-[10px] text-brand-inkMuted">Annual Tier Member</p>
+            </div>
           </div>
         </div>
 
@@ -1584,9 +1619,9 @@
             </div>
             <h4 class="font-teko text-3xl text-brand-ink uppercase leading-none">Experience Born2Fit</h4>
             <p class="text-[11px] text-brand-inkMuted leading-relaxed">Visit us at New Town for a complete facility tour and personalized movement evaluation.</p>
-            <a href="https://wa.me/919907464271?text=Hi%20Born2Fit,%20I%20want%20to%20book%20a%20gym%20tour" target="_blank" class="inline-flex items-center gap-1.5 bg-emerald-600 hover:bg-emerald-700 text-white text-[10px] font-bold uppercase tracking-widest px-5 py-2.5 rounded transition shadow-md">
-              <i class="fa-brands fa-whatsapp text-xs"></i> WhatsApp Tour Booking
-            </a>
+            <button onclick="openModal('Book Facility Tour')" class="bg-brand-ink hover:bg-black text-brand-creme text-[10px] font-bold uppercase tracking-widest px-5 py-2.5 rounded transition shadow-md">
+              Book A Gym Tour
+            </button>
           </div>
         </div>
 
@@ -1610,7 +1645,7 @@
             <i class="fa-solid fa-chevron-down text-xs transition transform"></i>
           </button>
           <div class="hidden mt-3 text-xs text-brand-inkMuted leading-relaxed border-t border-brand-cremeBorder pt-3">
-            Born2Fit is open <strong>Monday through Saturday from 6:00 AM to 10:00 PM</strong> (closed on Sundays). For direct queries, reach us on WhatsApp at <a href="https://wa.me/919907464271" target="_blank" class="text-emerald-700 font-bold hover:underline inline-flex items-center gap-1"><i class="fa-brands fa-whatsapp text-emerald-600"></i> +91 99074 64271</a>.
+            Born2Fit is open <strong>Monday through Saturday from 6:00 AM to 10:00 PM</strong> (closed on Sundays), allowing you to train seamlessly around your morning routines or evening office hours.
           </div>
         </div>
 
@@ -1620,7 +1655,7 @@
             <i class="fa-solid fa-chevron-down text-xs transition transform"></i>
           </button>
           <div class="hidden mt-3 text-xs text-brand-inkMuted leading-relaxed border-t border-brand-cremeBorder pt-3">
-            You can book directly by clicking the <strong>"Enroll"</strong> or <strong>"Book Trainer"</strong> buttons, or connect instantly over WhatsApp with our personal training desk at <a href="https://wa.me/919907464271?text=Hi%20Born2Fit,%20I%20want%20to%20book%20personal%20training" target="_blank" class="text-emerald-700 font-bold hover:underline inline-flex items-center gap-1"><i class="fa-brands fa-whatsapp text-emerald-600"></i> +91 99074 64271</a>.
+            You can book directly by clicking the <strong>"Enroll"</strong> or <strong>"Book Trainer"</strong> buttons on this page, or connect instantly over WhatsApp at <a href="https://wa.me/919907464271" class="text-emerald-700 font-bold inline-flex items-center gap-1 hover:underline"><i class="fa-brands fa-whatsapp text-sm text-[#25D366]"></i> +91 99074 64271</a> with our personal training desk to secure an available slot.
           </div>
         </div>
 
@@ -1630,7 +1665,7 @@
             <i class="fa-solid fa-chevron-down text-xs transition transform"></i>
           </button>
           <div class="hidden mt-3 text-xs text-brand-inkMuted leading-relaxed border-t border-brand-cremeBorder pt-3">
-            We are located right on New Town Main Road, Kolkata - 700159. Dedicated parking is available on-premise. Call or WhatsApp us at <a href="https://wa.me/919907464271" target="_blank" class="text-emerald-700 font-bold hover:underline inline-flex items-center gap-1"><i class="fa-brands fa-whatsapp text-emerald-600"></i> +91 99074 64271</a> for location directions.
+            We are located right on New Town Main Road, Kolkata - 700159 (conveniently accessible from Rajarhat, Baguiati, and Salt Lake). Dedicated two-wheeler and four-wheeler parking is available on-premise.
           </div>
         </div>
 
@@ -1640,7 +1675,7 @@
             <i class="fa-solid fa-chevron-down text-xs transition transform"></i>
           </button>
           <div class="hidden mt-3 text-xs text-brand-inkMuted leading-relaxed border-t border-brand-cremeBorder pt-3">
-            Yes. All personal training packages include comprehensive macro charts tailored to your local food preferences. Message us on WhatsApp: <a href="https://wa.me/919907464271?text=Hi%20Born2Fit,%20I%20want%20a%20nutrition%20plan" target="_blank" class="text-emerald-700 font-bold hover:underline inline-flex items-center gap-1"><i class="fa-brands fa-whatsapp text-emerald-600"></i> +91 99074 64271</a>.
+            Yes. All personal training packages include comprehensive macro and calorie distribution charts tailored specifically to your metabolic rate, lifestyle, and local Indian/Bengali food preferences.
           </div>
         </div>
 
@@ -1680,14 +1715,9 @@
               <li><i class="fa-solid fa-check text-brand-ink mr-1.5 text-[10px]"></i> Baseline workout schedule</li>
             </ul>
           </div>
-          <div class="mt-6 flex flex-col gap-2">
-            <button onclick="openModal('1 Month Plan - ₹1,199 (+ ₹499 Admission)')" class="w-full border border-brand-cremeBorder hover:bg-brand-ink hover:text-brand-creme hover:border-brand-ink text-brand-ink font-bold uppercase tracking-widest py-3 rounded-lg transition text-xs shadow-sm">
-              Select 1 Month
-            </button>
-            <a href="https://wa.me/919907464271?text=Hi%20Born2Fit,%20I%20want%20to%20inquire%20about%20the%201%20Month%20Trial%20plan" target="_blank" class="w-full bg-emerald-600 hover:bg-emerald-700 text-white font-bold uppercase tracking-widest py-2 rounded-lg transition text-xs flex items-center justify-center gap-1.5 shadow-sm">
-              <i class="fa-brands fa-whatsapp text-sm"></i> WhatsApp Us
-            </a>
-          </div>
+          <button onclick="openModal('1 Month Plan - ₹1,199 (+ ₹499 Admission)')" class="mt-6 w-full border border-brand-cremeBorder hover:bg-brand-ink hover:text-brand-creme hover:border-brand-ink text-brand-ink font-bold uppercase tracking-widest py-3 rounded-lg transition text-xs shadow-sm">
+            Select 1 Month
+          </button>
         </div>
 
         <!-- Tier 2: 3 Months -->
@@ -1709,14 +1739,9 @@
               <li><i class="fa-solid fa-check text-brand-ink mr-1.5 text-[10px]"></i> Biometric assessment review</li>
             </ul>
           </div>
-          <div class="mt-6 flex flex-col gap-2">
-            <button onclick="openModal('3 Months Plan - ₹3,499')" class="w-full border border-brand-cremeBorder hover:bg-brand-ink hover:text-brand-creme hover:border-brand-ink text-brand-ink font-bold uppercase tracking-widest py-3 rounded-lg transition text-xs shadow-sm">
-              Select 3 Months
-            </button>
-            <a href="https://wa.me/919907464271?text=Hi%20Born2Fit,%20I%20want%20to%20inquire%20about%20the%203%20Months%20plan" target="_blank" class="w-full bg-emerald-600 hover:bg-emerald-700 text-white font-bold uppercase tracking-widest py-2 rounded-lg transition text-xs flex items-center justify-center gap-1.5 shadow-sm">
-              <i class="fa-brands fa-whatsapp text-sm"></i> WhatsApp Us
-            </a>
-          </div>
+          <button onclick="openModal('3 Months Plan - ₹3,499')" class="mt-6 w-full border border-brand-cremeBorder hover:bg-brand-ink hover:text-brand-creme hover:border-brand-ink text-brand-ink font-bold uppercase tracking-widest py-3 rounded-lg transition text-xs shadow-sm">
+            Select 3 Months
+          </button>
         </div>
 
         <!-- Tier 3: 6 Months -->
@@ -1738,14 +1763,9 @@
               <li><i class="fa-solid fa-check text-brand-ink mr-1.5 text-[10px]"></i> Cardio, strength & lockers</li>
             </ul>
           </div>
-          <div class="mt-6 flex flex-col gap-2">
-            <button onclick="openModal('6 Months Plan - ₹5,499')" class="w-full border border-brand-cremeBorder hover:bg-brand-ink hover:text-brand-creme hover:border-brand-ink text-brand-ink font-bold uppercase tracking-widest py-3 rounded-lg transition text-xs shadow-sm">
-              Select 6 Months
-            </button>
-            <a href="https://wa.me/919907464271?text=Hi%20Born2Fit,%20I%20want%20to%20inquire%20about%20the%206%20Months%20plan" target="_blank" class="w-full bg-emerald-600 hover:bg-emerald-700 text-white font-bold uppercase tracking-widest py-2 rounded-lg transition text-xs flex items-center justify-center gap-1.5 shadow-sm">
-              <i class="fa-brands fa-whatsapp text-sm"></i> WhatsApp Us
-            </a>
-          </div>
+          <button onclick="openModal('6 Months Plan - ₹5,499')" class="mt-6 w-full border border-brand-cremeBorder hover:bg-brand-ink hover:text-brand-creme hover:border-brand-ink text-brand-ink font-bold uppercase tracking-widest py-3 rounded-lg transition text-xs shadow-sm">
+            Select 6 Months
+          </button>
         </div>
 
         <!-- Tier 4: Yearly (Featured Value) -->
@@ -1770,21 +1790,16 @@
               <li><i class="fa-solid fa-check text-brand-ink mr-1.5 text-[10px]"></i> Dedicated locker storage priority</li>
             </ul>
           </div>
-          <div class="mt-6 flex flex-col gap-2">
-            <button onclick="openModal('Yearly Plan - ₹8,999')" class="w-full bg-brand-ink hover:bg-black text-brand-creme font-bold uppercase tracking-widest py-3.5 rounded-lg transition text-xs shadow-md">
-              Select Yearly
-            </button>
-            <a href="https://wa.me/919907464271?text=Hi%20Born2Fit,%20I%20want%20to%20claim%20the%20Yearly%20Membership" target="_blank" class="w-full bg-emerald-600 hover:bg-emerald-700 text-white font-bold uppercase tracking-widest py-2.5 rounded-lg transition text-xs flex items-center justify-center gap-1.5 shadow-md">
-              <i class="fa-brands fa-whatsapp text-sm"></i> WhatsApp Yearly Plan
-            </a>
-          </div>
+          <button onclick="openModal('Yearly Plan - ₹8,999')" class="mt-6 w-full bg-brand-ink hover:bg-black text-brand-creme font-bold uppercase tracking-widest py-3.5 rounded-lg transition text-xs shadow-md">
+            Select Yearly
+          </button>
         </div>
 
       </div>
     </div>
   </section>
 
-  <!-- Location Section -->
+  <!-- Location & Enhanced WhatsApp Contact Section -->
   <section id="contact" class="py-24 border-b border-brand-cremeBorder">
     <div class="max-w-7xl mx-auto px-6">
       <div class="grid lg:grid-cols-2 gap-12 items-center">
@@ -1793,7 +1808,7 @@
             <div class="logo-metallic-container logo-pulse-glow h-9 px-1 border border-brand-gold/40 bg-brand-cremeCard">
               <img src="WhatsApp Image 2026-08-25 at 10.24.10 PM.jpeg" alt="Born2Fit B2F Logo" class="h-7 w-auto object-contain" />
             </div>
-            <span class="text-xs uppercase font-bold tracking-widest text-brand-inkMuted">Gym Location & Contact</span>
+            <span class="text-xs uppercase font-bold tracking-widest text-brand-inkMuted">Gym Location & Direct Contact</span>
           </div>
           <h2 class="font-teko text-5xl text-brand-ink uppercase">Born2Fit New Town</h2>
           <p class="text-brand-inkMuted text-sm font-normal leading-relaxed">
@@ -1821,44 +1836,46 @@
               </div>
             </div>
 
-            <div class="flex items-start gap-4">
-              <div class="w-9 h-9 rounded-full bg-emerald-50 border border-emerald-200 flex items-center justify-center text-emerald-600 shrink-0 shadow-sm">
-                <i class="fa-brands fa-whatsapp text-base"></i>
+            <!-- Authentic Real WhatsApp Direct Contact Card -->
+            <div class="p-4 rounded-xl bg-emerald-50 border border-emerald-200 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 shadow-sm">
+              <div class="flex items-center gap-3">
+                <div class="w-12 h-12 rounded-full bg-[#25D366] text-white flex items-center justify-center text-2xl shadow-md shrink-0">
+                  <i class="fa-brands fa-whatsapp"></i>
+                </div>
+                <div>
+                  <div class="text-xs font-bold text-emerald-950 uppercase tracking-wide flex items-center gap-1.5">
+                    Official WhatsApp Support
+                    <span class="w-2 h-2 rounded-full bg-[#25D366] animate-pulse"></span>
+                  </div>
+                  <p class="text-xs text-emerald-800 font-mono font-bold mt-0.5">+91 99074 64271</p>
+                  <p class="text-[11px] text-emerald-700">Immediate response during floor hours</p>
+                </div>
               </div>
-              <div>
-                <h4 class="font-bold text-brand-ink text-sm">Direct WhatsApp Contact</h4>
-                <p class="text-brand-inkMuted text-xs mt-0.5">
-                  <a href="https://wa.me/919907464271?text=Hi%20Born2Fit,%20I%20want%20to%20inquire%20about%20membership" target="_blank" class="text-emerald-700 font-bold hover:underline inline-flex items-center gap-1">
-                    +91 99074 64271 <i class="fa-solid fa-arrow-up-right-from-square text-[9px]"></i>
-                  </a> (Gym &amp; Personal Trainers Desk)
-                </p>
-              </div>
+              <a href="https://wa.me/919907464271?text=Hi%20Born2Fit,%20I%20am%20contacting%20you%20from%20your%20website" target="_blank" class="w-full sm:w-auto bg-[#25D366] hover:bg-[#1EBE5D] text-white text-xs font-bold uppercase tracking-wider px-5 py-2.5 rounded-lg transition shadow flex items-center justify-center gap-2 group shrink-0">
+                <i class="fa-brands fa-whatsapp text-sm group-hover:scale-110 transition-transform"></i>
+                <span>Message Now</span>
+              </a>
             </div>
           </div>
         </div>
 
-        <div class="h-80 rounded-2xl overflow-hidden border border-brand-cremeBorder bg-brand-cremeCard flex items-center justify-center p-6 text-center shadow-xl flex-col justify-center">
+        <div class="h-80 rounded-2xl overflow-hidden border border-brand-cremeBorder bg-brand-cremeCard flex items-center justify-center p-6 text-center shadow-xl">
           <div class="space-y-3">
-            <div class="logo-metallic-container logo-pulse-glow h-16 w-16 mx-auto border border-brand-gold/40 bg-brand-cremeCard p-1">
+            <div class="logo-metallic-container logo-pulse-glow h-20 w-20 mx-auto border border-brand-gold/40 bg-brand-cremeCard p-1">
               <img src="WhatsApp Image 2026-08-25 at 10.24.10 PM.jpeg" alt="Born2Fit B2F Center" class="h-full w-full object-contain" />
             </div>
             <h4 class="font-bold text-brand-ink text-lg">New Town Main Branch</h4>
             <p class="text-xs text-brand-inkMuted max-w-xs mx-auto">Equipped with dedicated parking spaces.</p>
-            <div class="flex flex-wrap gap-3 justify-center pt-2">
-              <a href="https://www.google.com/maps/search/?api=1&query=Born2Fit+Gouranganagar+Main+Road+Kolkata" target="_blank" class="bg-brand-ink hover:bg-black text-brand-creme text-xs font-bold uppercase tracking-widest px-4 py-2.5 rounded-lg transition shadow-md">
-                Google Maps
-              </a>
-              <a href="https://wa.me/919907464271?text=Hi%20Born2Fit,%20I%20want%20directions%20to%20the%20gym" target="_blank" class="bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-bold uppercase tracking-widest px-4 py-2.5 rounded-lg transition shadow-md flex items-center gap-1.5">
-                <i class="fa-brands fa-whatsapp text-sm"></i> WhatsApp Us
-              </a>
-            </div>
+            <a href="https://www.google.com/maps/search/?api=1&query=Born2Fit+Gouranganagar+Main+Road+Kolkata" target="_blank" class="inline-block bg-brand-ink hover:bg-black text-brand-creme text-xs font-bold uppercase tracking-widest px-5 py-2.5 rounded-lg transition shadow-md">
+              Open Google Maps
+            </a>
           </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Footer with Logo & Instagram Integration -->
+  <!-- Footer with Logo, Real WhatsApp Link & Instagram Integration -->
   <footer class="py-12 text-center text-xs text-brand-inkMuted bg-brand-cremeDark/80 border-t border-brand-cremeBorder">
     <div class="max-w-7xl mx-auto px-6 space-y-8">
       
@@ -1871,16 +1888,16 @@
           <span class="font-teko text-3xl tracking-widest text-brand-ink uppercase leading-none">Born<span class="font-light text-brand-inkMuted">2Fit</span></span>
         </div>
 
-        <div class="flex flex-wrap items-center gap-4 justify-center">
-          <!-- WhatsApp Contact Badge -->
+        <div class="flex flex-wrap items-center gap-3">
+          <!-- Real WhatsApp Badge in Footer -->
           <a 
-            href="https://wa.me/919907464271?text=Hi%20Born2Fit,%20I%20am%20reaching%20out%20from%20your%20website" 
+            href="https://wa.me/919907464271?text=Hi%20Born2Fit,%20connecting%20via%20your%20website%20footer" 
             target="_blank" 
             rel="noopener noreferrer" 
-            class="inline-flex items-center gap-2 px-5 py-2.5 rounded-full border border-emerald-300 bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-bold uppercase tracking-widest transition shadow-md"
+            class="inline-flex items-center gap-2 px-4 py-2.5 rounded-full bg-[#25D366] hover:bg-[#1EBE5D] text-white text-xs font-bold uppercase tracking-widest transition-all duration-300 shadow-md group"
           >
-            <i class="fa-brands fa-whatsapp text-base"></i>
-            <span>WhatsApp: +91 99074 64271</span>
+            <i class="fa-brands fa-whatsapp text-base group-hover:scale-110 transition-transform"></i>
+            <span>+91 99074 64271</span>
           </a>
 
           <!-- Prominent Instagram Connection Badge -->
@@ -1891,7 +1908,7 @@
             class="inline-flex items-center gap-2.5 px-5 py-2.5 rounded-full border border-brand-cremeBorder bg-brand-cremeCard hover:bg-gradient-to-r hover:from-[#833ab4] hover:via-[#fd1d1d] hover:to-[#fcb045] hover:text-white text-brand-ink text-xs font-bold uppercase tracking-widest transition-all duration-300 shadow-md group transform hover:scale-105"
           >
             <i class="fa-brands fa-instagram text-base text-pink-600 group-hover:text-white transition"></i>
-            <span>Follow @born.2fitb2f</span>
+            <span>@born.2fitb2f</span>
             <i class="fa-solid fa-arrow-up-right-from-square text-[10px] opacity-70 group-hover:opacity-100"></i>
           </a>
         </div>
@@ -1899,7 +1916,7 @@
 
       <!-- Bottom Row: Copyright & Credentials -->
       <div class="flex flex-col md:flex-row justify-between items-center gap-4 text-xs">
-        <p>&copy; Born2Fit. All rights reserved. New Town, Kolkata - 700159. | WhatsApp: <a href="https://wa.me/919907464271" target="_blank" class="text-emerald-700 font-bold hover:underline">+91 99074 64271</a></p>
+        <p>&copy; Born2Fit. All rights reserved. New Town, Kolkata - 700159.</p>
         <p class="inline-flex items-center gap-1.5 flex-wrap justify-center">
           Owner &amp; Personal Trainer: Mr. Jeet Das (<strong class="text-brand-ink font-bold">JD</strong>) 
           <span class="jd-badge-enhanced h-5 w-5"><img src="WhatsApp Image 2026-08-31 at 2.10.37 AM.jpeg" alt="JD" class="h-full w-full" /></span> 
@@ -1910,7 +1927,7 @@
     </div>
   </footer>
 
-  <!-- Enrollment Modal with Logo -->
+  <!-- Enrollment Modal with Real WhatsApp Confirmation Action -->
   <div id="inquiryModal" class="fixed inset-0 z-50 bg-brand-ink/50 backdrop-blur-sm hidden items-center justify-center p-4">
     <div class="bg-brand-cremeCard border border-brand-cremeBorder rounded-2xl max-w-md w-full p-6 relative shadow-2xl">
       <button onclick="closeModal()" class="absolute top-4 right-4 text-brand-inkMuted hover:text-brand-ink">
@@ -1923,7 +1940,13 @@
         </div>
         <h3 class="font-teko text-3xl text-brand-ink uppercase" id="modalTitle">Get Started</h3>
       </div>
-      <p class="text-xs text-brand-inkMuted mb-6">Our personal trainers will connect directly on WhatsApp (+91 99074 64271).</p>
+      <p class="text-xs text-brand-inkMuted mb-4">Your inquiry directly routes to our personal training WhatsApp team.</p>
+
+      <!-- WhatsApp Notice Banner Inside Modal -->
+      <div class="mb-5 p-2.5 bg-emerald-50 border border-emerald-200 rounded-lg flex items-center gap-2.5">
+        <i class="fa-brands fa-whatsapp text-lg text-[#25D366]"></i>
+        <p class="text-[11px] text-emerald-900 font-medium">Submitting opens a direct pre-filled WhatsApp conversation with Born2Fit coaches.</p>
+      </div>
 
       <form onsubmit="handleFormSubmit(event)" class="space-y-4">
         <input type="hidden" id="selectedPlan" />
@@ -1932,7 +1955,7 @@
           <input type="text" id="modalUserName" required class="w-full bg-brand-creme border border-brand-cremeBorder rounded-lg px-3 py-2.5 text-brand-ink text-sm focus:border-brand-ink focus:outline-none" placeholder="e.g. Joydeep Sen" />
         </div>
         <div>
-          <label class="block text-xs uppercase font-bold text-brand-inkMuted mb-1">Phone / WhatsApp Number</label>
+          <label class="block text-xs uppercase font-bold text-brand-inkMuted mb-1">Phone / WhatsApp</label>
           <input type="tel" id="modalUserPhone" required class="w-full bg-brand-creme border border-brand-cremeBorder rounded-lg px-3 py-2.5 text-brand-ink text-sm focus:border-brand-ink focus:outline-none" placeholder="e.g. +91 98300 XXXXX" />
         </div>
         <div>
@@ -1948,9 +1971,10 @@
             <option>Gym Floor Access</option>
           </select>
         </div>
-        <button type="submit" class="w-full bg-emerald-600 hover:bg-emerald-700 text-white font-bold uppercase text-xs tracking-widest py-3.5 rounded-lg transition shadow-md flex items-center justify-center gap-2">
-          <i class="fa-brands fa-whatsapp text-base"></i>
-          <span>Send via WhatsApp (+91 99074 64271)</span>
+        <!-- WhatsApp Branded Submission Button -->
+        <button type="submit" class="w-full bg-[#25D366] hover:bg-[#1EBE5D] text-white font-bold uppercase text-xs tracking-wider py-3.5 rounded-lg transition shadow-md flex items-center justify-center gap-2.5 group">
+          <i class="fa-brands fa-whatsapp text-lg group-hover:scale-110 transition-transform"></i>
+          <span>Continue on WhatsApp</span>
         </button>
       </form>
     </div>
@@ -2150,7 +2174,7 @@
       const phone = document.getElementById('modalUserPhone').value.trim();
       const interest = document.getElementById('modalUserInterest').value;
 
-      const message = `Hello Born2Fit (+91 99074 64271)! I would like to enroll/inquire:%0A` +
+      const message = `Hello Born2Fit! I would like to enroll/inquire:%0A` +
                       `• Name: ${encodeURIComponent(name)}%0A` +
                       `• Phone: ${encodeURIComponent(phone)}%0A` +
                       `• Interested In: ${encodeURIComponent(interest)}%0A` +
